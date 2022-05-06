@@ -46,13 +46,12 @@ const GetWeather = () => {
         return () => clearInterval(timeOut);
     });
 
-    useEffect(() => {
-        //console.log('loaded')
+    useEffect(() => {              
         updateTime();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [process === "loaded"]);
+    }, [weatherData.timezone_offset]);
 
-    const updateTime = () => {          
+    const updateTime = () => {               
         if (process === "loaded") {
             const {
                 timezone_offset,
@@ -71,7 +70,7 @@ const GetWeather = () => {
         }
     };
     
-    const setContent = (process) => {
+    const setContent = (process) => {        
         switch (process) {
             case "waiting":
                 return null;
