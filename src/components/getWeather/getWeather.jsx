@@ -9,7 +9,8 @@ import ErrorMessage from "../errorMessage/ErrorMessage";
 import Spinner from "../spinner/Spinner";
 import CurrentView from "../currentView/currentView";
 import ForecastView from "../forcastView/forcastView";
-import { loaded } from "../../actions/actions";
+//import { loaded } from "../../actions/actions";
+import { loaded } from "../getWeather/getWeatherSlice";
 
 import "./getWeather.css";
 

@@ -1,7 +1,9 @@
 import { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { getCityCoordinates, getCityWeather, getCityPollution } from "../components/getData/GetData";
-import { process } from "../actions/actions";
+//import { process } from "../actions/actions";
+import { process } from '../components/getWeather/getWeatherSlice'
+
 
 export const useFetchWeather = () => {
     const dispatch = useDispatch();

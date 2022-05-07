@@ -5,7 +5,8 @@ import { InputLabel, MenuItem, FormControl } from "@mui/material";
 import { Select } from "@mui/material";
 //import { Button, Stack } from "@mui/material";
 import cityList from './cityList.json';
-import { citySelect, cityUpdate } from '../../actions/actions';
+// import { citySelect, cityUpdate } from '../../actions/actions';
+import { citySelect, cityUpdate } from '../getWeather/getWeatherSlice';
 
 import "./InputSelect.css";
 

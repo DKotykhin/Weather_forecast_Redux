@@ -1,7 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import reducer from '../reducers/reducer';
+import reducer from '../components/getWeather/getWeatherSlice';
 
 export const store = configureStore({
-  reducer: reducer  
+  reducer: reducer,
+  devTools: process.env.NODE_ENV !== 'production'  
 });
