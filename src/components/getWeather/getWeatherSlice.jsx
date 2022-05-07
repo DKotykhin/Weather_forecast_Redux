@@ -34,3 +34,7 @@ export const {
     process,
     loaded
 } = actions
+
+export const cityNameSelector = (state) => state.cityName;
+export const cityUpdateFlag = (state) => state.flag;
+export const setProcess = (state) => state.process;
