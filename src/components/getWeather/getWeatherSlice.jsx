@@ -36,5 +36,5 @@ export const {
 } = actions
 
 export const cityNameSelector = (state) => state.cityName;
-export const cityUpdateFlag = (state) => state.flag;
-export const setProcess = (state) => state.process;
+export const flagSelector = (state) => state.flag;
+export const processSelector = (state) => state.process;

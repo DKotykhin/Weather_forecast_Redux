@@ -9,12 +9,11 @@ import ErrorMessage from "../errorMessage/ErrorMessage";
 import Spinner from "../spinner/Spinner";
 import CurrentView from "../currentView/currentView";
 import ForecastView from "../forcastView/forcastView";
-//import { loaded } from "../../actions/actions";
 import {
     cityNameSelector,
-    cityUpdateFlag,
-    setProcess,
-    loaded,
+    flagSelector,
+    processSelector,
+    loaded,    
 } from "../getWeather/getWeatherSlice";
 
 import "./getWeather.css";
@@ -28,8 +27,8 @@ const GetWeather = () => {
     const dispatch = useDispatch();
 
     const cityName = useSelector(cityNameSelector);
-    const flag = useSelector(cityUpdateFlag);
-    const process = useSelector(setProcess);
+    const flag = useSelector(flagSelector);
+    const process = useSelector(processSelector);
 
     const { getWeather } = useFetchWeather();
 
@@ -59,14 +58,17 @@ const GetWeather = () => {
             setLastupd(
                 moment.unix(dt).startOf().fromNow());
         }
-    }, [process, weatherData]);
+    }, [weatherData, process]);
 
     useEffect(() => {
         if (Object.keys(weatherData).length > 0) {
-            dispatch(loaded());
-            updateTime();            
+            dispatch(loaded());                       
         }
-    }, [weatherData, updateTime, dispatch]);
+    }, [weatherData, dispatch]);
+    
+    useEffect(() => {                   
+        updateTime();       
+    }, [weatherData, updateTime]);
 
     useEffect(() => {
         const timeOut = setInterval(() => updateTime(), 10000);
