@@ -15,13 +15,13 @@ const style = {
     p: 4,
 };
 
-export default function PollutionView({ pollutiondata }) {
+export default function PollutionView({ pollutionData }) {
   
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const { components, main } = pollutiondata;
+    const { components, main } = pollutionData;
     const airState = [
         "отлично",
         "хорошо",

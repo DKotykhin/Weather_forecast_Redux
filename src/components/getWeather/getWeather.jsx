@@ -4,17 +4,11 @@ import { useSelector, useDispatch } from "react-redux";
 import moment from "moment";
 import "moment/locale/ru";
 
-import { useFetchWeather } from "../../hooks/hookRequest";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import Spinner from "../spinner/Spinner";
 import CurrentView from "../currentView/currentView";
 import ForecastView from "../forcastView/forcastView";
-import {
-    cityNameSelector,
-    flagSelector,
-    processSelector,
-    loaded,    
-} from "../getWeather/getWeatherSlice";
+import { fetchData } from "../getWeather/getWeatherSlice";
 
 import "./getWeather.css";
 
@@ -22,26 +16,20 @@ const GetWeather = () => {
     const [localTime, setLocalTime] = useState(null);
     const [localData, setLocalData] = useState(null);
     const [lastupd, setLastupd] = useState(null);
-    const [weatherData, setWeatherData] = useState({});
-
+    
     const dispatch = useDispatch();
 
-    const cityName = useSelector(cityNameSelector);
-    const flag = useSelector(flagSelector);
-    const process = useSelector(processSelector);
-
-    const { getWeather } = useFetchWeather();
+    const cityName = useSelector(state => state.cityName);
+    const flag = useSelector(state => state.flag);
+    const process = useSelector(state => state.process);
+    const data = useSelector(state => state.data);
+    const { weatherData } = data;
 
     useEffect(() => {
         if (cityName) {
-            getWeather(cityName).then((weather) => {
-                //if (!weather) return;
-                setWeatherData(weather.weatherData);
-                console.log("pollutionData :>> ", weather.pollutionData);
-                console.log("weatherData :>> ", weather.weatherData);
-            });
-        }
-    }, [flag, cityName, getWeather]);
+            dispatch(fetchData(cityName))
+        }        
+    }, [flag, cityName, dispatch])
 
     const updateTime = useCallback(() => {
         if (process === "loaded") {
@@ -59,12 +47,6 @@ const GetWeather = () => {
                 moment.unix(dt).startOf().fromNow());
         }
     }, [weatherData, process]);
-
-    useEffect(() => {
-        if (Object.keys(weatherData).length > 0) {
-            dispatch(loaded());                       
-        }
-    }, [weatherData, dispatch]);
     
     useEffect(() => {                   
         updateTime();       

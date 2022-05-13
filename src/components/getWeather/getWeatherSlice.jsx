@@ -1,13 +1,23 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { useFetchWeather } from "../../hooks/hookRequest";
 
 const initialState = {    
     cityName: '',
     flag: false,
-    process: 'waiting'
+    process: 'waiting',
+    data: {}    
 };
 
+export const fetchData = createAsyncThunk(
+    'data/fetchData',
+    (cityName) => {
+        const { getWeather } = useFetchWeather();        
+        return getWeather(cityName);
+    }
+)
+
 const getWeatherSlice = createSlice({
-    name: 'weather',
+    name: 'data',
     initialState,
     reducers: {
         citySelect: (state, action) => {
@@ -15,13 +25,20 @@ const getWeatherSlice = createSlice({
         },
         cityUpdate: state => {
             state.flag = !state.flag
-        },
-        process: (state, action) => {
-            state.process = action.payload
-        },
-        loaded: state => {
-            state.process = 'loaded'
         }
+    },
+    extraReducers: (builder) => {        
+        builder
+            .addCase(fetchData.pending, state => {state.process = 'loading'})
+            .addCase(fetchData.fulfilled, (state, action) => {
+                state.process = 'loaded';
+                state.data = action.payload;
+                console.log(state.data)
+            })
+            .addCase(fetchData.rejected, state => {
+                state.process = 'error';
+            })
+            .addDefaultCase(() => {})
     }
 });
 
@@ -31,10 +48,6 @@ export default reducer;
 export const {
     citySelect,
     cityUpdate,
-    process,
-    loaded
-} = actions
-
-export const cityNameSelector = (state) => state.cityName;
-export const flagSelector = (state) => state.flag;
-export const processSelector = (state) => state.process;
+    process,    
+    data,    
+} = actions;
