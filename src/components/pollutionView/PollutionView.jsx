@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Box, Button, Typography, Modal } from "@mui/material";
 
-import "./pollutionView.css";
+import "./pollutionView.scss";
 
 const style = {
     position: "absolute",

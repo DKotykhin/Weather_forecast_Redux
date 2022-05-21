@@ -10,7 +10,7 @@ import CurrentView from "../currentView/currentView";
 import ForecastView from "../forcastView/forcastView";
 import { fetchData } from "../getWeather/getWeatherSlice";
 
-import "./getWeather.css";
+import "./getWeather.scss";
 
 const GetWeather = () => {
     const [localTime, setLocalTime] = useState(null);

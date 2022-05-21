@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Grid, Typography, Box } from "@mui/material";
 
 import { getWeatherData, getWeatherParams } from "./currentData";
 
@@ -48,18 +48,18 @@ const CurrentView = ({ currentdata }) => {
   ];
 
   return (
-    <>
-      <p className="lastupd">Последнее обновление: {lastupd}</p>
+    <Box className="current_view">
+      <Typography className="last_upd">Последнее обновление: {lastupd}</Typography>
       <Grid container>
         <Grid item xs={12} md={6} xl={3}>
-          <div className="image">
-            <h2>{cityName}</h2>
+          <Box className="city_box">
+            <Typography className='city_name'>{cityName}</Typography>
             <img
               src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
               alt={icon}
             />
-            <h2>{descr}</h2>
-          </div>
+            <Typography className='city_name'>{descr}</Typography>
+          </Box>
         </Grid>
         <Grid item xs={12} md={6} xl={3}>
           <table className="table">
@@ -112,7 +112,7 @@ const CurrentView = ({ currentdata }) => {
           </table>
         </Grid>
       </Grid>
-    </>
+    </Box>
   );
 };
 

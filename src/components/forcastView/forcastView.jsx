@@ -26,19 +26,6 @@ const ForecastView = ({ forecastdata }) => {
           forecastDay,
         } = getForecastParams(item, forecastdata);
 
-        // const newPressure = Math.round(pressure / 1.333),
-        //   dayTemp = tempCelsius(day),
-        //   nightTemp = tempCelsius(night),
-        //   newWindSpeed = Math.round(wind_speed),
-        //   newPop = Math.round(pop * 100),
-        //   newWindDirect = windDirect(wind_deg),
-        //   forecastDay = moment
-        //     .unix(dt)
-        //     .utc()
-        //     .add(timezone_offset, "seconds")
-        //     .format("dddd DD MMMM");
-          // descr = weather[0]["description"],
-          // icon = weather[0]["icon"];
           const { descr, icon } = getForecastData(weather);
 
         const forecastItem = [
@@ -58,7 +45,7 @@ const ForecastView = ({ forecastdata }) => {
         ];
 
         return (
-          <Grid key={i} item xs={12} md={6} xl={3}>
+          <Grid key={i} item xs={12} md={6} xl={3} className="current_view">
             <table              
               className="table"
               style={{ "backgroundColor": "gainsboro" }}

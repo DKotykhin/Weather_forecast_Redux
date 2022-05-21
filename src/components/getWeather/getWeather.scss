@@ -1,0 +1,49 @@
+.current_view {
+    box-sizing: border-box;
+    .last_upd {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 50px;
+        color: brown;
+    }
+    .city_box {
+        text-align: center;
+        min-height: 252px;
+        margin: 0 auto;
+        margin-bottom: 30px;
+        border: solid 2px brown;
+        border-radius: 10px;
+        width: 380px;
+        background-color: #a4ffe1;
+        color: brown;
+        .city_name {
+            font-size: 24px;
+            font-weight: 700;
+            padding: 20px 0;
+        }
+    }
+    .table {
+        font-size: 20px;
+        width: 380px;
+        min-height: 252px;
+        margin: 0 auto;
+        margin-bottom: 30px;
+        padding: 10px;
+        border: solid 2px brown;
+        border-radius: 10px;
+        background-color: antiquewhite;
+    }
+    .table>tbody>tr>td:last-child {
+        font-weight: bold;
+        color: brown;
+    }
+    .table>tbody>tr>td,
+    .table>thead>tr>td {
+        padding: 5px;
+    }
+    .table>thead {
+        font-weight: bold;
+        color: brown;
+        text-align: center;
+    }
+}
