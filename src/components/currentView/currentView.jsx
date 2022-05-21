@@ -1,4 +1,5 @@
 import { Grid, Typography, Box } from "@mui/material";
+import { Table, TableHead, TableBody, TableCell, TableRow, TableContainer } from '@mui/material';
 
 import { getWeatherData, getWeatherParams } from "./currentData";
 
@@ -62,54 +63,59 @@ const CurrentView = ({ currentdata }) => {
           </Box>
         </Grid>
         <Grid item xs={12} md={6} xl={3}>
-          <table className="table">
-            <thead>
-              <tr>
-                {/* <td>Сегодня: </td> */}
-                <td colSpan="2">
-                  {localData}
-                </td>
-              </tr>
-            </thead>
-            <tbody>
-              {currentItem_1.map((item, i) => {
-                return (
-                  <tr key={i}>
-                    <td>{item.name}</td>
-                    <td>{item.value}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+          <TableContainer className="table">
+            <Table>
+              <TableHead>
+                <TableRow>                
+                  <TableCell colSpan={2} className='table_row'>
+                    {localData}
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {currentItem_1.map((item, i) => {
+                  return (
+                    <TableRow key={i}>
+                      <TableCell className='table_cell_item'>{item.name}</TableCell>
+                      <TableCell className='table_cell_item item_2'>{item.value}</TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+            </Table>
+          </TableContainer>
         </Grid>
         <Grid item xs={12} md={6} xl={3}>
-          <table className="table">
-            <tbody>
-              {currentItem_2.map((item, i) => {
-                return (
-                  <tr key={i}>
-                    <td>{item.name}</td>
-                    <td>{item.value}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+          <TableContainer className="table">
+            <Table>
+              <TableBody>
+                {currentItem_2.map((item, i) => {
+                  return (
+                    <TableRow key={i}>
+                      <TableCell className='table_cell_item'>{item.name}</TableCell>
+                      <TableCell className='table_cell_item item_2'>{item.value}</TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+            </Table>
+          </TableContainer>
         </Grid>
         <Grid item xs={12} md={6} xl={3}>
-          <table className="table">
-            <tbody>
-              {currentItem_3.map((item, i) => {
-                return (
-                  <tr key={i}>
-                    <td>{item.name}</td>
-                    <td>{item.value}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+        <TableContainer className="table">
+            <Table>
+              <TableBody>
+                {currentItem_3.map((item, i) => {
+                  return (
+                    <TableRow key={i}>
+                      <TableCell className='table_cell_item'>{item.name}</TableCell>
+                      <TableCell className='table_cell_item item_2'>{item.value}</TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+            </Table>
+          </TableContainer>
         </Grid>
       </Grid>
     </Box>

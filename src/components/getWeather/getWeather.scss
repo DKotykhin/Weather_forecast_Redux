@@ -8,42 +8,51 @@
     }
     .city_box {
         text-align: center;
-        min-height: 252px;
+        min-height: 248px;
         margin: 0 auto;
         margin-bottom: 30px;
         border: solid 2px brown;
-        border-radius: 10px;
-        width: 380px;
+        width: 376px;
         background-color: #a4ffe1;
         color: brown;
+        border-radius: 15px;
         .city_name {
             font-size: 24px;
             font-weight: 700;
-            padding: 20px 0;
+            padding: 18px 0;
         }
     }
     .table {
-        font-size: 20px;
-        width: 380px;
-        min-height: 252px;
+        width: 356px;
+        min-height: 228px;
         margin: 0 auto;
         margin-bottom: 30px;
         padding: 10px;
         border: solid 2px brown;
-        border-radius: 10px;
+        border-radius: 15px;
         background-color: antiquewhite;
+        .table_row {
+            text-align: center;
+            font-weight: bold;
+            color: brown;
+            font-size: 20px;
+            border: none;
+            padding: 12px;
+        }
+        .padding_row {
+            padding-bottom: 25px;
+        }
+        .table_cell_item {
+            border: none;
+            padding: 10px 3px 5px 3px;
+            font-size: 20px;
+        }
+        .item_2 {
+            font-weight: bold;
+            color: brown;
+        }
     }
-    .table>tbody>tr>td:last-child {
-        font-weight: bold;
-        color: brown;
-    }
-    .table>tbody>tr>td,
-    .table>thead>tr>td {
-        padding: 5px;
-    }
-    .table>thead {
-        font-weight: bold;
-        color: brown;
-        text-align: center;
+    .forecast_table {
+        background-color: gainsboro;
     }
 }
