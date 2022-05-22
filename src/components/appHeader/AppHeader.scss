@@ -1,8 +1,14 @@
 .header {
-    font-size: 32px;
+    font-size: 50px;
     color: #a52a2a;
     font-weight: 700;
     margin-top: 10px;
     padding: 10px;
     border-bottom: 1px solid #808080;
+    @media (max-width: 1200px) {
+        font-size: 40px;
+    }
+    @media (max-width: 768px) {
+        font-size: 30px;
+    }
 }
