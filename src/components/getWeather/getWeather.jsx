@@ -19,10 +19,11 @@ const GetWeather = () => {
     
     const dispatch = useDispatch();
 
-    const cityName = useSelector(state => state.cityName);
-    const flag = useSelector(state => state.flag);
-    const process = useSelector(state => state.process);
-    const data = useSelector(state => state.data);
+    // const cityName = useSelector(state => state.cityName);
+    // const flag = useSelector(state => state.flag);
+    // const process = useSelector(state => state.process);
+    // const data = useSelector(state => state.data);
+    const { cityName, flag, process, data } = useSelector(state => state.getdata);
     const { weatherData } = data;
 
     useEffect(() => {

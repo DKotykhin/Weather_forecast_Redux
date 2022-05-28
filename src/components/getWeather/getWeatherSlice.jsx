@@ -9,7 +9,7 @@ const initialState = {
 };
 
 export const fetchData = createAsyncThunk(
-    'data/fetchData',
+    'fetchdata',
     (cityName) => {
         const { getWeather } = useFetchWeather();        
         return getWeather(cityName);
@@ -17,7 +17,7 @@ export const fetchData = createAsyncThunk(
 )
 
 const getWeatherSlice = createSlice({
-    name: 'data',
+    name: 'getdata',
     initialState,
     reducers: {
         citySelect: (state, action) => {
@@ -47,7 +47,5 @@ const {actions, reducer} = getWeatherSlice;
 export default reducer;
 export const {
     citySelect,
-    cityUpdate,
-    process,    
-    data,    
+    cityUpdate,        
 } = actions;
