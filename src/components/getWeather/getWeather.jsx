@@ -19,10 +19,6 @@ const GetWeather = () => {
     
     const dispatch = useDispatch();
 
-    // const cityName = useSelector(state => state.cityName);
-    // const flag = useSelector(state => state.flag);
-    // const process = useSelector(state => state.process);
-    // const data = useSelector(state => state.data);
     const { cityName, flag, process, data } = useSelector(state => state.getdata);
     const { weatherData } = data;
 
@@ -33,7 +29,7 @@ const GetWeather = () => {
     }, [flag, cityName, dispatch])
 
     const updateTime = useCallback(() => {
-        if (process === "loaded") {
+        if (weatherData) {
             const {
                 timezone_offset,
                 current: { dt },
@@ -47,11 +43,11 @@ const GetWeather = () => {
             setLastupd(
                 moment.unix(dt).startOf().fromNow());
         }
-    }, [weatherData, process]);
+    }, [weatherData]);
     
     useEffect(() => {                   
         updateTime();       
-    }, [weatherData, updateTime]);
+    }, [updateTime, weatherData]);
 
     useEffect(() => {
         const timeOut = setInterval(() => updateTime(), 10000);

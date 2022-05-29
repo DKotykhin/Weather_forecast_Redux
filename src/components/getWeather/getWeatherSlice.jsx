@@ -9,7 +9,7 @@ const initialState = {
 };
 
 export const fetchData = createAsyncThunk(
-    'fetchdata',
+    'getdata/fetch',
     (cityName) => {
         const { getWeather } = useFetchWeather();        
         return getWeather(cityName);
@@ -27,18 +27,27 @@ const getWeatherSlice = createSlice({
             state.flag = !state.flag
         }
     },
-    extraReducers: (builder) => {        
-        builder
-            .addCase(fetchData.pending, state => {state.process = 'loading'})
-            .addCase(fetchData.fulfilled, (state, action) => {
-                state.process = 'loaded';
-                state.data = action.payload;
-                console.log(state.data)
-            })
-            .addCase(fetchData.rejected, state => {
-                state.process = 'error';
-            })
-            .addDefaultCase(() => {})
+    // extraReducers: (builder) => {        
+    //     builder
+    //         .addCase(fetchData.pending, state => {state.process = 'loading'})
+    //         .addCase(fetchData.fulfilled, (state, action) => {
+    //             state.process = 'loaded';
+    //             state.data = action.payload;
+    //             console.log(state.data)
+    //         })
+    //         .addCase(fetchData.rejected, state => {
+    //             state.process = 'error';
+    //         })
+    //         .addDefaultCase(() => {})
+    // }
+    extraReducers: {       
+        [fetchData.pending]: state => { state.process = 'loading' },
+        [fetchData.fulfilled]: (state, action) => {
+            state.process = 'loaded';
+            state.data = action.payload;
+            console.log(state.data)
+        },
+        [fetchData.rejected]: state => { state.process = 'error' }        
     }
 });
 
