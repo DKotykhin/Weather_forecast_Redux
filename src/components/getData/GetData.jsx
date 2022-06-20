@@ -17,8 +17,9 @@ const getCityCoordinates = async (cityName) => {
 };
 
 const getCityWeather = async (latitude, lontitude) => {
-    const result = await instance.get("data/2.5/onecall?&lang=ru&", {
+    const result = await instance.get("data/2.5/onecall", {
         params: {
+            lang: 'ru',
             lat: latitude,
             lon: lontitude,
             appid: appKey,
@@ -28,8 +29,9 @@ const getCityWeather = async (latitude, lontitude) => {
 };
 
 const getCityPollution = async (latitude, lontitude) => {
-    const result = await instance.get("data/2.5/air_pollution?&lang=ru&", {
+    const result = await instance.get("data/2.5/air_pollution", {
         params: {
+            lang: 'ru',
             lat: latitude,
             lon: lontitude,
             appid: appKey,
